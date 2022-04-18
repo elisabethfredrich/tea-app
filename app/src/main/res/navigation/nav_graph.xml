@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/FragmentHome">
+
+    <fragment
+        android:id="@+id/FragmentHome"
+        android:name="com.example.itea.FragmentHome"
+        android:label="FragmentHome">
+    </fragment>
+
+    <fragment
+        android:id="@+id/FragmentBasket"
+        android:name="com.example.itea.FragmentBasket"
+        android:label="FragmentBasket">
+    </fragment>
+
+    <fragment
+        android:id="@+id/FragmentMap"
+        android:name="com.example.itea.FragmentMap"
+        android:label="FragmentMap">
+    </fragment>
+
+</navigation>
