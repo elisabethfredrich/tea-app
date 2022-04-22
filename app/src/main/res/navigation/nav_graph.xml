@@ -20,6 +20,12 @@
     </fragment>
 
     <fragment
+        android:id="@+id/FragmentShopping"
+        android:name="com.example.itea.FragmentShopping"
+        android:label="FragmentShopping">
+    </fragment>
+
+    <fragment
         android:id="@+id/FragmentBasket"
         android:name="com.example.itea.FragmentBasket"
         android:label="FragmentBasket">
