@@ -27,12 +27,12 @@ public class ItemsDB {
         }
     }
 
-   /* public void initialize(Context context) {
-        if (mDatabase == null) {
-            mDatabase= new ItemBaseHelper(context.getApplicationContext()).getWritableDatabase();
-            if (getValues().size() == 0) fillItemsDB(context);
-        }
-    }*/
+  /* public void initialize(Context context) {
+       if (mDatabase == null) {
+           mDatabase = new ItemBaseHelper(context.getApplicationContext()).getWritableDatabase();
+           if (getValues().size() == 0) fillItemsDB(context);
+       }
+   }*/
 
     public void addItem(String name, int price){
             Item newItem= new Item(name, price);

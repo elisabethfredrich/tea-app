@@ -16,18 +16,17 @@ import androidx.recyclerview.widget.RecyclerView;
 public class FragmentShopping extends Fragment {
     ItemsDB itemsDB;
     ItemAdapter mAdapter= new ItemAdapter();
-    BasketViewModel basket;
+   BasketViewModel basket;
 
-    //maybe add later
-    //@Override public void onCreate(Bundle savedInstanceState) {
-    //    super.onCreate(savedInstanceState);
-    //}
+   /* @Override public void onCreate(Bundle savedInstanceState) {
+     super.onCreate(savedInstanceState);
+    }*/
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         final View v = inflater.inflate(R.layout.fragment_shopping, container, false);
-        basket = new ViewModelProvider(requireActivity()).get(BasketViewModel.class);
+       basket = new ViewModelProvider(requireActivity()).get(BasketViewModel.class);
 
         itemsDB = new ItemsDB(getActivity());
         // Set up recyclerview
@@ -38,17 +37,22 @@ public class FragmentShopping extends Fragment {
         return v;
     }
 
+    public void onResume() {
+        super.onResume();
+       basket = new ViewModelProvider(requireActivity()).get(BasketViewModel.class);
+       basket.getValue().observe(getViewLifecycleOwner(), i -> mAdapter.notifyDataSetChanged());
+    }
+
     private class ItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private final TextView name, price;
-        private final ImageButton addToBasket;
+        private ImageButton addToBasket;
 
         public ItemHolder(View itemView) {
             super(itemView);
             name= itemView.findViewById(R.id.item_name);
             price= itemView.findViewById(R.id.item_price);
-            addToBasket = itemView.findViewById(R.id.addToBasket);
+         addToBasket = itemView.findViewById(R.id.addToBasket);
             addToBasket.setOnClickListener(this);
-
         }
 
         public void bind(Item item, int position){
@@ -58,11 +62,11 @@ public class FragmentShopping extends Fragment {
 
         @Override
         public void onClick(View v) {
-            String name= (String)((TextView)v.findViewById(R.id.item_name)).getText();
-            basket.addItemToBasket(itemsDB.getItem(name));
-            Toast.makeText(getActivity(), "Succesfully added to basket", Toast.LENGTH_LONG).show();
-        }
-    }
+                    String itemName = name.getText().toString();
+                    int itemPrice = Integer.parseInt(price.getText().toString().split("\\s")[0]);
+                   basket.addItemToBasket(new Item(itemName, itemPrice));
+
+        }}
 
     private class ItemAdapter extends RecyclerView.Adapter<ItemHolder> {
 
