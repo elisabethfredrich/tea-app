@@ -10,4 +10,5 @@
         android:layout_height="wrap_content"
         android:text="Home fragment 2"
         android:textSize="50sp"/>
+
 </LinearLayout>
