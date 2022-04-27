@@ -21,7 +21,7 @@ public class Basket extends ViewModel{
    // @RequiresApi(api = Build.VERSION_CODES.N)
     public void addItemToBasket(Item item){
         if(basket.containsKey(item)){
-            int newValue = basket.get(item);
+            int newValue = basket.get(item) + 1;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 basket.replace(item, newValue);
             }

@@ -4,31 +4,31 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.itea.database.BasketViewModel;
-
 public class FragmentShopping extends Fragment {
-    //TextView text;
     ItemsDB itemsDB;
     ItemAdapter mAdapter= new ItemAdapter();
     BasketViewModel basket;
 
-    @Override public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
+    //maybe add later
+    //@Override public void onCreate(Bundle savedInstanceState) {
+    //    super.onCreate(savedInstanceState);
+    //}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         final View v = inflater.inflate(R.layout.fragment_shopping, container, false);
+        basket = new ViewModelProvider(requireActivity()).get(BasketViewModel.class);
 
-      //  text = v.findViewById(R.id.fragment_name_text);
         itemsDB = new ItemsDB(getActivity());
         // Set up recyclerview
         RecyclerView itemList= v.findViewById(R.id.listItems);
@@ -39,26 +39,28 @@ public class FragmentShopping extends Fragment {
     }
 
     private class ItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        private final TextView name, price, addToBasket;
+        private final TextView name, price;
+        private final ImageButton addToBasket;
 
         public ItemHolder(View itemView) {
             super(itemView);
-
             name= itemView.findViewById(R.id.item_name);
             price= itemView.findViewById(R.id.item_price);
             addToBasket = itemView.findViewById(R.id.addToBasket);
-            itemView.setOnClickListener(this);
+            addToBasket.setOnClickListener(this);
+
         }
 
         public void bind(Item item, int position){
             name.setText(item.getName());
-            price.setText(item.getPrice());
+            price.setText(item.getPrice()+" kr.");
         }
 
         @Override
         public void onClick(View v) {
             String name= (String)((TextView)v.findViewById(R.id.item_name)).getText();
             basket.addItemToBasket(itemsDB.getItem(name));
+            Toast.makeText(getActivity(), "Succesfully added to basket", Toast.LENGTH_LONG).show();
         }
     }
 

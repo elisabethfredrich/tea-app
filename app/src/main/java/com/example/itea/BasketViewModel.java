@@ -1,4 +1,4 @@
-package com.example.itea.database;
+package com.example.itea;
 
 import android.content.Context;
 
