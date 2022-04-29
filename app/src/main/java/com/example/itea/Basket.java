@@ -10,45 +10,52 @@ import java.util.List;
 import java.util.Map;
 
 public class Basket extends ViewModel{
-    private static HashMap<Item, Integer> basket;
-    private int price;
+    private static HashMap<String, Integer[]> basket; //the integer[] contains the price and the amount
+    private int totalPrice;
 
     public void initialize(){
         if(basket == null){
             basket = new HashMap<>();
-            price = 0;
+            totalPrice = 0;
         }
     }
 
-    public void addItemToBasket(Item item){
-        if(basket.containsKey(item)){
-            int newValue = basket.get(item) + 1;
-            basket.put(item, newValue);
+    public void addItemToBasket(String itemName, int itemPrice){
+        if(basket.containsKey(itemName)){
+            Integer[] newValue = basket.get(itemName);
+            newValue[1] += 1; //increase amount with +1
+            basket.put(itemName, newValue);
         }
         else{
-            basket.put(item, 1);
+            Integer[] value = {itemPrice,1}; //new entry has values price and 1 amount
+            basket.put(itemName,value);
         }
-        price += item.getPrice();
+        totalPrice += itemPrice;
     }
 
-    public void removeItemFromBasket(Item item){
-        if(basket.get(item)>0){
-            int newValue = basket.get(item) -1;
-            basket.put(item, newValue);
+    public void removeItemFromBasket(String itemName){
+        Integer[] itemValues = basket.get(itemName);
+        int itemPrice = itemValues[0];
+        int itemAmount = itemValues[1];
+        if(itemAmount > 1){
+            itemAmount -= 1; //decrease amount with 1
+            itemValues[1] = itemAmount;
+            basket.put(itemName, itemValues);
         }
         else{
-            basket.remove(item);
+            basket.remove(itemName);
         }
+        totalPrice -= itemPrice;
     }
 
-    public Map<Item, Integer> getValues(){
+    public Map<String, Integer[]> getValues(){
         return basket;
     }
 
-    public List<Item> getList(){
-        List<Item> result = new ArrayList<>();
-        for(Item item: basket.keySet()){
-            result.add(item);
+    public List<String> getList(){
+        List<String> result = new ArrayList<>();
+        for(String itemName: basket.keySet()){
+            result.add(itemName);
         }
         return result;
     }
@@ -58,7 +65,7 @@ public class Basket extends ViewModel{
     }
 
     public int getPrice(){
-        return price;
+        return totalPrice;
     }
 
 
