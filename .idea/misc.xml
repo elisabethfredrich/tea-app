@@ -5,6 +5,8 @@
       <map>
         <entry key="../../../../../../../../../../layout/custom_preview.xml" value="0.159375" />
         <entry key="app/src/main/res/layout-land/one_row.xml" value="0.12610229276895943" />
+        <entry key="app/src/main/res/layout-land/one_row_basket.xml" value="0.21119929453262787" />
+        <entry key="app/src/main/res/layout-land/one_row_shopping.xml" value="0.21119929453262787" />
         <entry key="app/src/main/res/layout/fragment_basket.xml" value="0.22735507246376813" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.22735507246376813" />
         <entry key="app/src/main/res/layout/fragment_home2.xml" value="0.1" />
@@ -13,6 +15,8 @@
         <entry key="app/src/main/res/layout/fragment_shopping.xml" value="0.625" />
         <entry key="app/src/main/res/layout/main_activity.xml" value="0.22735507246376813" />
         <entry key="app/src/main/res/layout/one_row.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/one_row_basket.xml" value="0.24947916666666667" />
+        <entry key="app/src/main/res/layout/one_row_shopping.xml" value="0.24947916666666667" />
         <entry key="app/src/main/res/menu/menu_bottom_nav.xml" value="0.24947916666666667" />
       </map>
     </option>

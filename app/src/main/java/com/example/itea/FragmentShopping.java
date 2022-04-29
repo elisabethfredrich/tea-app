@@ -80,7 +80,7 @@ public class FragmentShopping extends Fragment {
         @Override
         public ItemHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             LayoutInflater layoutInflater= LayoutInflater.from(getActivity());
-            View v= layoutInflater.inflate(R.layout.one_row, parent, false);
+            View v= layoutInflater.inflate(R.layout.one_row_shopping, parent, false);
             return new ItemHolder(v);
         }
 

@@ -39,9 +39,20 @@ public class BasketViewModel extends ViewModel {
             basket.setValue(temp);
         }
 
+        public void removeItemFromBasket(Item item){
+            Basket temp = basket.getValue();
+            temp.removeItemFromBasket(item);
+            basket.setValue(temp);
+        }
 
-        public Map<Item, Integer> getList() {  return basket.getValue().getValues();  }
+
+        public Map<Item, Integer> getMap() {  return basket.getValue().getValues();  }
+        public List<Item> getList() {  return basket.getValue().getList();  }
+
+
 
         public int size() { return basket.getValue().size(); }
+
+        public int getPrice(){ return basket.getValue().getPrice();}
     }
 
