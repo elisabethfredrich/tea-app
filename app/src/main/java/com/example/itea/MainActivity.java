@@ -9,6 +9,7 @@ import androidx.navigation.ui.NavigationUI;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
+    private final static BasketViewModel basket = new BasketViewModel();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,5 +23,9 @@ public class MainActivity extends AppCompatActivity {
         // Hook navigation controller to bottom navigation view
         NavigationUI.setupWithNavController(navView, navController);
 
+        //Initialising the basket
+        basket.initialize();
+
     }
+
 }
