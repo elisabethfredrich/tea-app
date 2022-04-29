@@ -16,8 +16,9 @@ import androidx.recyclerview.widget.RecyclerView;
 public class FragmentShopping extends Fragment {
     ItemsDB itemsDB;
     ItemAdapter mAdapter= new ItemAdapter();
-   BasketViewModel basket;
+    BasketViewModel basket;
 
+   //Do we need this?
    /* @Override public void onCreate(Bundle savedInstanceState) {
      super.onCreate(savedInstanceState);
     }*/
@@ -26,9 +27,11 @@ public class FragmentShopping extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         final View v = inflater.inflate(R.layout.fragment_shopping, container, false);
-       basket = new ViewModelProvider(requireActivity()).get(BasketViewModel.class);
 
+        //get the basket and the itemsDB
+        basket = new ViewModelProvider(requireActivity()).get(BasketViewModel.class);
         itemsDB = new ItemsDB(getActivity());
+
         // Set up recyclerview
         RecyclerView itemList= v.findViewById(R.id.listItems);
         itemList.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -37,35 +40,39 @@ public class FragmentShopping extends Fragment {
         return v;
     }
 
-    public void onResume() {
-        super.onResume();
-       basket = new ViewModelProvider(requireActivity()).get(BasketViewModel.class);
-       basket.getValue().observe(getViewLifecycleOwner(), i -> mAdapter.notifyDataSetChanged());
-    }
+    //not sure if we need this. Still works without it
+    //public void onResume() {
+    //    super.onResume();
+    //   basket = new ViewModelProvider(requireActivity()).get(BasketViewModel.class);
+    //   basket.getValue().observe(getViewLifecycleOwner(), i -> mAdapter.notifyDataSetChanged());
+    //}
 
     private class ItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        private final TextView name, price;
-        private ImageButton addToBasket;
+        private final TextView nameTextView, priceTextView;
+        private ImageButton addToBasketButton;
 
         public ItemHolder(View itemView) {
             super(itemView);
-            name= itemView.findViewById(R.id.item_name);
-            price= itemView.findViewById(R.id.item_price);
-         addToBasket = itemView.findViewById(R.id.addToBasket);
-            addToBasket.setOnClickListener(this);
+            nameTextView= itemView.findViewById(R.id.item_name);
+            priceTextView= itemView.findViewById(R.id.item_price);
+            addToBasketButton = itemView.findViewById(R.id.addToBasket);
+
+            addToBasketButton.setOnClickListener(this);
         }
 
         public void bind(Item item, int position){
-            name.setText(item.getName());
-            price.setText(item.getPrice()+" kr.");
+            nameTextView.setText(item.getName());
+            priceTextView.setText(item.getPrice()+" kr.");
         }
 
         @Override
         public void onClick(View v) {
-                    String itemName = name.getText().toString();
-                    int itemPrice = Integer.parseInt(price.getText().toString().split("\\s")[0]);
-                   basket.addItemToBasket(new Item(itemName, itemPrice));
+            String itemName= (String)((TextView)itemView.findViewById(R.id.item_name)).getText();
+            Item item = itemsDB.getItem(itemName);
+            basket.addItemToBasket(item);
 
+            //cant get the toast to work
+            Toast.makeText(getActivity(), itemName + "succesfully added to basket", Toast.LENGTH_LONG).show();
         }}
 
     private class ItemAdapter extends RecyclerView.Adapter<ItemHolder> {

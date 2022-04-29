@@ -21,7 +21,7 @@ public class Basket extends ViewModel{
     public void addItemToBasket(Item item){
         if(basket.containsKey(item)){
             int newValue = basket.get(item) + 1;
-                basket.remove(item);
+                //basket.remove(item); //dont need this as put updates the value
                 basket.put(item, newValue);
             }
         else{

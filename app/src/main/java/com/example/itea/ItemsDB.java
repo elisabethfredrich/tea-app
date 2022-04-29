@@ -73,7 +73,7 @@ public class ItemsDB {
         return items;
     }
 
-    public Item getItem(String name){
+    /*public Item getItem(String name){
         ArrayList<Item> items= new ArrayList<>();
         Item item = null;
         ItemCursorWrapper cursor= queryItems(null, null);
@@ -85,8 +85,23 @@ public class ItemsDB {
         }
         cursor.close();
         return item;
-    }
+    }*/
 
+    public Item getItem(String name){
+        String selection = ItemsDBSchema.ItemTable.Cols.PRODUCT_NAME+ " = ?";
+        String[] selectionArgs = { name.toLowerCase() };
+
+        Item item = null;
+
+        ItemCursorWrapper cursor= queryItems(selection, selectionArgs);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            item = cursor.getItem();
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return item;
+    }
 
     // Database helper methods to convert between Items and database rows
     private static ContentValues getContentValues(Item item) {
