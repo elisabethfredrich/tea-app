@@ -33,21 +33,21 @@ public class BasketViewModel extends ViewModel {
 
         public MutableLiveData<Basket> getValue() { return basket; }
 
-        public void addItemToBasket(Item item){
+        public void addItemToBasket(String itemName, int itemPrice){
             Basket temp= basket.getValue();
-            temp.addItemToBasket(item);
+            temp.addItemToBasket(itemName, itemPrice);
             basket.setValue(temp);
         }
 
-        public void removeItemFromBasket(Item item){
+        public void removeItemFromBasket(String itemName){
             Basket temp = basket.getValue();
-            temp.removeItemFromBasket(item);
+            temp.removeItemFromBasket(itemName);
             basket.setValue(temp);
         }
 
 
-        public Map<Item, Integer> getMap() {  return basket.getValue().getValues();  }
-        public List<Item> getList() {  return basket.getValue().getList();  }
+        public Map<String, Integer[]> getMap() {  return basket.getValue().getValues();  }
+        public List<String> getList() {  return basket.getValue().getList();  }
 
 
 

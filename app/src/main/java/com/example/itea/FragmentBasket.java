@@ -31,12 +31,35 @@ public class FragmentBasket extends Fragment {
         itemList.setLayoutManager(new LinearLayoutManager(getActivity()));
         itemList.setAdapter(mAdapter);
 
-        basket.getValue().observe(getActivity(), itemsDB -> mAdapter.notifyDataSetChanged());
+        //when the content of the basket changes, we notify the ItemAdapter and updates the shown price
+        basket.getValue().observe(getViewLifecycleOwner(), basket -> {
+            mAdapter.notifyDataSetChanged();
+            updateBasketText();
+            }
+        );
 
 
         introText = v.findViewById(R.id.introText);
         totalPrice = v.findViewById(R.id.price);
 
+        updateBasketText();
+
+
+        return v;
+    }
+
+    // do we need this?
+    public void onResume() {
+        super.onResume();
+        basket = new ViewModelProvider(requireActivity()).get(BasketViewModel.class);
+        basket.getValue().observe(getViewLifecycleOwner(), basket -> {
+            mAdapter.notifyDataSetChanged();
+            updateBasketText();
+        });
+    }
+
+    //better name for this method?
+    private void updateBasketText(){
         if(basket.size()>0){
             introText.setText("Your basket contains:");
             totalPrice.setText("Total price: "+basket.getPrice() + " kr.");
@@ -45,15 +68,6 @@ public class FragmentBasket extends Fragment {
             introText.setText("Your basket is empty.");
             totalPrice.setText("");
         }
-
-
-        return v;
-    }
-
-    public void onResume() {
-        super.onResume();
-        basket = new ViewModelProvider(requireActivity()).get(BasketViewModel.class);
-        basket.getValue().observe(getViewLifecycleOwner(), i -> mAdapter.notifyDataSetChanged());
     }
 
 
@@ -73,17 +87,16 @@ public class FragmentBasket extends Fragment {
 
         }
 
-        public void bind(Item item, int position, int amount){
-            mNameTextView.setText(item.getName());
-            mPriceTextView.setText(item.getPrice() +" kr.");
-            mAmountTextView.setText("x"+amount);
+        public void bind(String itemName, int position, int itemPrice, int itemAmount){
+            mNameTextView.setText(itemName);
+            mPriceTextView.setText(itemPrice + " kr.");
+            mAmountTextView.setText("x"+itemAmount);
         }
 
         @Override
         public void onClick(View v) {
             String itemName= (String)((TextView)itemView.findViewById(R.id.item_name)).getText();
-            //Item item = //how do we get the item from a string?
-            //basket.removeItemFromBasket(item);
+            basket.removeItemFromBasket(itemName);
         }
 
 
@@ -100,9 +113,11 @@ public class FragmentBasket extends Fragment {
 
         @Override
         public void onBindViewHolder(ItemHolder holder, int position) {
-            Item item=  basket.getList().get(position);
-            int amount = basket.getMap().get(item);
-            holder.bind(item, position, amount);
+            String itemName=  basket.getList().get(position);
+            Integer[] itemValues = basket.getMap().get(itemName);
+            int itemPrice= itemValues[0];
+            int itemAmount = itemValues[1];
+            holder.bind(itemName, position, itemPrice, itemAmount);
         }
 
         @Override
