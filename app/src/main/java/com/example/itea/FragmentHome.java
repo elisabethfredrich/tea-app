@@ -19,14 +19,7 @@ public class FragmentHome extends Fragment {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
 
         text = v.findViewById(R.id.fragment_name_text);
-        buttonToHome2 = v.findViewById(R.id.button_to_home2);
 
-        buttonToHome2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_Home_to_Home2);
-            }
-        });
 
         return v;
     }

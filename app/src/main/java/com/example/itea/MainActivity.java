@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.logo, null);
         actionBar.setCustomView(view);
+
         // Find the NavController
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         // Find reference to bottom navigation view
