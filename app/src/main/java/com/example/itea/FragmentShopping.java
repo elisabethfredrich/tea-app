@@ -1,5 +1,9 @@
 package com.example.itea;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -58,7 +62,7 @@ public class FragmentShopping extends Fragment {
             super(itemView);
             nameTextView= itemView.findViewById(R.id.item_name);
             priceTextView= itemView.findViewById(R.id.item_price);
-       //     productImage = itemView.findViewById(R.id.tea_img);
+            productImage = itemView.findViewById(R.id.tea_img);
             addToBasketButton = itemView.findViewById(R.id.addToBasket);
 
             addToBasketButton.setOnClickListener(this);
@@ -68,6 +72,12 @@ public class FragmentShopping extends Fragment {
         //    productImage.setImageDrawable(item.getImage());
             nameTextView.setText(item.getName());
             priceTextView.setText(item.getPrice()+" kr.");
+
+            String uri = "@drawable/"+item.getImage();
+            int imageResource = getResources().getIdentifier(uri, null, "com.example.itea");
+            Drawable res = getResources().getDrawable(imageResource);
+            productImage.setImageDrawable(res);
+            //productImage.setImageResource(imageResource);
         }
 
         @Override
