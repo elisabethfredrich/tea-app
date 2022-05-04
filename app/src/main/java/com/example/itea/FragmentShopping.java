@@ -1,10 +1,12 @@
 package com.example.itea;
 
+import android.media.Image;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,23 +52,27 @@ public class FragmentShopping extends Fragment {
     private class ItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private final TextView nameTextView, priceTextView;
         private ImageButton addToBasketButton;
+        private ImageView productImage;
 
         public ItemHolder(View itemView) {
             super(itemView);
             nameTextView= itemView.findViewById(R.id.item_name);
             priceTextView= itemView.findViewById(R.id.item_price);
+       //     productImage = itemView.findViewById(R.id.tea_img);
             addToBasketButton = itemView.findViewById(R.id.addToBasket);
 
             addToBasketButton.setOnClickListener(this);
         }
 
         public void bind(Item item, int position){
+        //    productImage.setImageDrawable(item.getImage());
             nameTextView.setText(item.getName());
             priceTextView.setText(item.getPrice()+" kr.");
         }
 
         @Override
         public void onClick(View v) {
+       //     ImageView itemImage = itemView.findViewById(R.id.tea_img);
             String itemName= (String)((TextView)itemView.findViewById(R.id.item_name)).getText();
             int itemPrice= Integer.parseInt(((String)((TextView)itemView.findViewById(R.id.item_price)).getText()).split("\\s")[0]);
             basket.addItemToBasket(itemName,itemPrice);

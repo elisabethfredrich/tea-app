@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../../../../../../../layout/custom_preview.xml" value="0.159375" />
+        <entry key="app/src/main/res/drawable/ic_baseline_add_shopping_cart_24.xml" value="0.2984375" />
         <entry key="app/src/main/res/layout-land/one_row.xml" value="0.12610229276895943" />
         <entry key="app/src/main/res/layout-land/one_row_basket.xml" value="0.21119929453262787" />
         <entry key="app/src/main/res/layout-land/one_row_shopping.xml" value="0.21119929453262787" />
@@ -13,11 +14,14 @@
         <entry key="app/src/main/res/layout/fragment_map.xml" value="0.22735507246376813" />
         <entry key="app/src/main/res/layout/fragment_navbar.xml" value="0.22735507246376813" />
         <entry key="app/src/main/res/layout/fragment_shopping.xml" value="0.625" />
+        <entry key="app/src/main/res/layout/logo.xml" value="0.14895833333333333" />
         <entry key="app/src/main/res/layout/main_activity.xml" value="0.22735507246376813" />
         <entry key="app/src/main/res/layout/one_row.xml" value="0.25" />
         <entry key="app/src/main/res/layout/one_row_basket.xml" value="0.24947916666666667" />
-        <entry key="app/src/main/res/layout/one_row_shopping.xml" value="0.24947916666666667" />
+        <entry key="app/src/main/res/layout/one_row_shopping.xml" value="0.1" />
         <entry key="app/src/main/res/menu/menu_bottom_nav.xml" value="0.24947916666666667" />
+        <entry key="app/src/main/res/menu/menue_top_nav.xml" value="0.14895833333333333" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.16510416666666666" />
       </map>
     </option>
   </component>

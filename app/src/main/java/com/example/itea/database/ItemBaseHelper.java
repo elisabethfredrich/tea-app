@@ -15,7 +15,7 @@ public class ItemBaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table " + ItemsDBSchema.ItemTable.NAME + "(" +
-                ItemsDBSchema.ItemTable.Cols.PRODUCT_NAME + ", " + ItemsDBSchema.ItemTable.Cols.PRICE + ")"
+                ItemsDBSchema.ItemTable.Cols.PRODUCT_NAME + ", " + ItemsDBSchema.ItemTable.Cols.PRICE + ", " + ItemsDBSchema.ItemTable.Cols.IMG + ")"
         );
     }
 

@@ -34,10 +34,10 @@ public class ItemsDB {
        }
    }*/
 
-    public void addItem(String name, int price){
-            Item newItem= new Item(name, price);
-            ContentValues values= getContentValues(newItem);
-            mDatabase.insert(ItemsDBSchema.ItemTable.NAME, null, values);
+    public void addItem(String name, int price, String image){
+        Item newItem= new Item(name, price, image);
+        ContentValues values= getContentValues(newItem);
+        mDatabase.insert(ItemsDBSchema.ItemTable.NAME, null, values);
     }
 
 
@@ -48,11 +48,11 @@ public class ItemsDB {
             String line = reader.readLine();
             while(line != null){
                 String[] item = line.split(", ");
-                addItem(item[0].toLowerCase(),Integer.parseInt(item[1]));
+                addItem(item[0],Integer.parseInt(item[1]), item[2]);
                 line = reader.readLine();
             }
         }        catch(IOException e){
-                //FIX LATER
+            //FIX LATER
         }}
 
 
@@ -87,7 +87,7 @@ public class ItemsDB {
         return item;
     }*/
 
-    public Item getItem(String name){
+    /*public Item getItem(String name){
         String selection = ItemsDBSchema.ItemTable.Cols.PRODUCT_NAME+ " = ?";
         String[] selectionArgs = { name.toLowerCase() };
 
@@ -101,7 +101,7 @@ public class ItemsDB {
         }
         cursor.close();
         return item;
-    }
+    }*/
 
     // Database helper methods to convert between Items and database rows
     private static ContentValues getContentValues(Item item) {

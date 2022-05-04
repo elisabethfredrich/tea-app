@@ -1,19 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center|center">
+    android:gravity="center|center"
+    android:orientation="vertical">
+
+
+    <ImageView
+        android:id="@+id/welcome_img"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:src="@drawable/tea"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/fragment_name_text"
+        android:id="@+id/home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Home fragment"
-        android:textSize="50sp"/>
+        android:layout_margin="5dp"
+        android:text="@string/welcome"
+        android:textColor="@color/creme"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toBottomOf="@id/welcome_img"
+        app:layout_constraintTop_toTopOf="@id/welcome_img"
+        app:layout_constraintStart_toStartOf="@id/welcome_img"/>
 
-    <Button
-        android:id="@+id/button_to_home2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Click for subpage"/>
-</LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
