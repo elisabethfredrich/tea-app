@@ -69,7 +69,6 @@ public class FragmentShopping extends Fragment {
         }
 
         public void bind(Item item, int position){
-        //    productImage.setImageDrawable(item.getImage());
             nameTextView.setText(item.getName());
             priceTextView.setText(item.getPrice()+" kr.");
 
@@ -77,12 +76,10 @@ public class FragmentShopping extends Fragment {
             int imageResource = getResources().getIdentifier(uri, null, "com.example.itea");
             Drawable res = getResources().getDrawable(imageResource);
             productImage.setImageDrawable(res);
-            //productImage.setImageResource(imageResource);
         }
 
         @Override
         public void onClick(View v) {
-       //     ImageView itemImage = itemView.findViewById(R.id.tea_img);
             String itemName= (String)((TextView)itemView.findViewById(R.id.item_name)).getText();
             int itemPrice= Integer.parseInt(((String)((TextView)itemView.findViewById(R.id.item_price)).getText()).split("\\s")[0]);
             basket.addItemToBasket(itemName,itemPrice);

@@ -12,7 +12,7 @@
         android:id="@+id/nav_host_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         app:defaultNavHost="true"
         app:layout_constraintBottom_toTopOf="@+id/bottom_nav_view"
         app:layout_constraintTop_toBottomOf="@id/guideline2"
@@ -24,7 +24,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/menu_bottom_nav" />
+        app:menu="@menu/menu_bottom_nav"
+        app:labelVisibilityMode="labeled"/>
 
     <!-- The standard top bar of the app -->
     <androidx.constraintlayout.widget.Guideline
@@ -33,5 +34,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="64dp" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

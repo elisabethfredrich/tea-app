@@ -2,14 +2,14 @@ Matcha Tea, 35, matcha
 Sencha Tea, 32, sencha
 Lemon Tea, 45, lemon
 Quince Tea, 32, quince
-Earl Grey Tea, 35, earlgrey
-Lapsang Tea, 55, lapsang_souchong
+Earl Grey Tea, 35, earl
+Lapsang Tea, 55, lapsang
 Christmas Tea, 29, christmas
 Temple Tea, 29, temple
 Aronia Tea, 32, aronia
 Chamomile Tea, 29, chamomile
 Goodnight Tea, 30, goodnight
 Licorice Tea, 39, licorice
-Rhubarb Tea, 32, rooibos_rhubarb
-Ginger Tea, 29, rooibos_ginger
-Sea Buckthorn, 39, rooibos_seabuckthorn
+Rhubarb Tea, 32, rhubarb
+Ginger Tea, 29, ginger
+Seabuckthorn Tea, 39, seabuckthorn

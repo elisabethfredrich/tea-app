@@ -21,18 +21,14 @@ public class ItemsDB {
     private static SQLiteDatabase mDatabase;
 
     public ItemsDB(Context context){
-        if (mDatabase == null) {
-            mDatabase= new ItemBaseHelper(context.getApplicationContext()).getWritableDatabase();
-            if (getValues().size() == 0) fillItemsDB(context);
-        }
-    }
-
-  /* public void initialize(Context context) {
        if (mDatabase == null) {
-           mDatabase = new ItemBaseHelper(context.getApplicationContext()).getWritableDatabase();
-           if (getValues().size() == 0) fillItemsDB(context);
+            mDatabase= new ItemBaseHelper(context.getApplicationContext()).getWritableDatabase();
+           if (getValues().size() == 0)
+                fillItemsDB(context);
        }
-   }*/
+   }
+
+
 
     public void addItem(String name, int price, String image){
         Item newItem= new Item(name, price, image);
@@ -73,41 +69,13 @@ public class ItemsDB {
         return items;
     }
 
-    /*public Item getItem(String name){
-        ArrayList<Item> items= new ArrayList<>();
-        Item item = null;
-        ItemCursorWrapper cursor= queryItems(null, null);
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
-            if(cursor.getItem().getName().equals(name)) {
-                item = cursor.getItem();
-            }
-        }
-        cursor.close();
-        return item;
-    }*/
-
-    /*public Item getItem(String name){
-        String selection = ItemsDBSchema.ItemTable.Cols.PRODUCT_NAME+ " = ?";
-        String[] selectionArgs = { name.toLowerCase() };
-
-        Item item = null;
-
-        ItemCursorWrapper cursor= queryItems(selection, selectionArgs);
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
-            item = cursor.getItem();
-            cursor.moveToNext();
-        }
-        cursor.close();
-        return item;
-    }*/
 
     // Database helper methods to convert between Items and database rows
     private static ContentValues getContentValues(Item item) {
         ContentValues values=  new ContentValues();
         values.put(ItemsDBSchema.ItemTable.Cols.PRODUCT_NAME, item.getName());
         values.put(ItemsDBSchema.ItemTable.Cols.PRICE, item.getPrice());
+        values.put(ItemsDBSchema.ItemTable.Cols.IMG, item.getImage());
         return values;
     }
 
