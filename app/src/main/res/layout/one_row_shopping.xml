@@ -15,12 +15,12 @@
 
         <ImageView
             android:id="@+id/tea_img"
-            android:layout_width="131dp"
+            android:layout_width="72dp"
             android:layout_height="72dp"
             android:src="@drawable/itea_logo"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/guideline5" />
+            app:layout_constraintEnd_toStartOf="@id/guideline5" />
 
         <TextView
             android:id="@+id/item_name"
