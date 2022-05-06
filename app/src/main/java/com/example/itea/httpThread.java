@@ -6,7 +6,6 @@ import android.webkit.WebView;
 
 public class httpThread implements Runnable {
     // to pass parameter to thread
-    String dataUrl;
     WebView ui;
     Location start;
 
@@ -20,8 +19,8 @@ public class httpThread implements Runnable {
             @Override
             public void run() {
                 Location dest= TeaShopDB.get().findClosest(start).getLocation();
-                //Log.i("***SR", start.toString());
-                //Log.i("***DR", dest.toString());
+                Log.i("***SR", start.toString());
+                Log.i("***DR", dest.toString());
                 String mapUrl = "https://maps.google.com?saddr="+start.getLatitude()+","+start.getLongitude()+
                         "&daddr="+dest.getLatitude()+","+dest.getLongitude();
                 ui.loadUrl(mapUrl);

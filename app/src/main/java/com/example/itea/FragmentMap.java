@@ -52,8 +52,6 @@ public class FragmentMap extends Fragment {
         mWeb = (WebView) v.findViewById(R.id.webpage);
         mWeb.getSettings().setJavaScriptEnabled(true);
         mWeb.setWebViewClient(new WebViewClient());
-        //mWeb.loadUrl("https://www.google.com/maps?saddr=55.6672083,12.604739&daddr=55.68074,12.57897");
-
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(getActivity());
         getLastLocation();
@@ -62,15 +60,6 @@ public class FragmentMap extends Fragment {
         return v;
     }
 
-   private void startBrowser(Location start, Location dest) {
-        String url = "https://maps.google.com?saddr=" + start.getLatitude() + "," + start.getLongitude() +
-                "&daddr=" + dest.getLatitude() + "," + dest.getLongitude();
-        mWeb.loadUrl(url);
-    }
-
-    private Location findTeaShop2(Location l){
-        return teaShopDB.findClosest(l).getLocation();
-    }
 
     private void findTeaShop(Location l){
         teaShopDB= TeaShopDB.get();
@@ -78,8 +67,6 @@ public class FragmentMap extends Fragment {
         new Thread(getTeaShop).start();
     }
 
-
-    //all of this is from the NearestToilet app
 
     @SuppressLint("MissingPermission")  // necessary
     private void getLastLocation() {
