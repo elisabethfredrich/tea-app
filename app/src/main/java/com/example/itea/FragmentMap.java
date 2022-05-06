@@ -49,15 +49,11 @@ public class FragmentMap extends Fragment {
         text = v.findViewById(R.id.fragment_name_text);
         teaShopDB = TeaShopDB.get();
 
-
-        mWeb = v.findViewById(R.id.webpage);
+        mWeb = (WebView) v.findViewById(R.id.webpage);
         mWeb.getSettings().setJavaScriptEnabled(true);
+        mWeb.setWebViewClient(new WebViewClient());
+        //mWeb.loadUrl("https://www.google.com/maps?saddr=55.6672083,12.604739&daddr=55.68074,12.57897");
 
-        mWeb.setWebViewClient(new WebViewClient() {
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                return false;
-            }
-        });
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(getActivity());
         getLastLocation();
@@ -66,7 +62,7 @@ public class FragmentMap extends Fragment {
         return v;
     }
 
-    private void startBrowser(Location start, Location dest) {
+   private void startBrowser(Location start, Location dest) {
         String url = "https://maps.google.com?saddr=" + start.getLatitude() + "," + start.getLongitude() +
                 "&daddr=" + dest.getLatitude() + "," + dest.getLongitude();
         mWeb.loadUrl(url);
