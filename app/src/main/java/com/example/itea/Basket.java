@@ -14,6 +14,7 @@ import java.util.Map;
 public class Basket extends ViewModel{
     private static HashMap<String, Integer[]> basket; //the integer[] contains the price and the amount
     private int totalPrice;
+    private int countSum;
 
     public void initialize(){
         if(basket == null){
@@ -33,6 +34,7 @@ public class Basket extends ViewModel{
             basket.put(itemName,value);
         }
         totalPrice += itemPrice;
+        countSum++;
     }
 
     public void removeItemFromBasket(String itemName){
@@ -48,6 +50,7 @@ public class Basket extends ViewModel{
             basket.remove(itemName);
         }
         totalPrice -= itemPrice;
+        countSum--;
     }
 
     public Map<String, Integer[]> getValues(){
@@ -65,6 +68,8 @@ public class Basket extends ViewModel{
     public int size(){
         return basket.size();
     }
+
+    public int totalSize(){return countSum;}
 
     public int getPrice(){
         return totalPrice;

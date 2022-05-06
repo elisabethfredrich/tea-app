@@ -7,6 +7,7 @@ import android.view.View;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
@@ -15,7 +16,7 @@ import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
-    private final static BasketViewModel basket = new BasketViewModel();
+    private static BasketViewModel basket;
     private BadgeDrawable badge;
 
     @Override
@@ -39,21 +40,23 @@ public class MainActivity extends AppCompatActivity {
         // Hook navigation controller to bottom navigation view
         NavigationUI.setupWithNavController(navView, navController);
 
+
         //Initialising the basket
+        basket = new ViewModelProvider(this).get(BasketViewModel.class);
         basket.initialize();
 
         badge = navView.getOrCreateBadge(R.id.FragmentBasket);
 
-       // basket.getValue().observe(this, basket -> updateBadge());
+        basket.getValue().observe(this, badge -> updateBadge());
 
     }
 
     public void updateBadge(){
-        if(basket.size()==0){
+        if(basket.totalSize()==0){
             badge.setVisible(false);
         }
         else{
-            badge.setNumber(basket.size());
+            badge.setNumber(basket.totalSize());
             badge.setVisible(true);
 
         }

@@ -55,6 +55,8 @@ public class BasketViewModel extends ViewModel {
 
         public int size() { return basket.getValue().size(); }
 
+        public int totalSize(){return basket.getValue().totalSize();}
+
         public int getPrice(){ return basket.getValue().getPrice();}
     }
 
