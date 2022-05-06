@@ -8,15 +8,6 @@
         android:id="@+id/FragmentHome"
         android:name="com.example.itea.FragmentHome"
         android:label="FragmentHome">
-        <action
-            android:id="@+id/action_Home_to_Home2"
-            app:destination="@id/FragmentHome2" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/FragmentHome2"
-        android:name="com.example.itea.FragmentHome2"
-        android:label="FragmentHome2">
     </fragment>
 
     <fragment

@@ -12,14 +12,12 @@ import androidx.navigation.Navigation;
 
 public class FragmentHome extends Fragment {
     TextView text;
-    Button buttonToHome2;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
 
         text = v.findViewById(R.id.fragment_name_text);
-
 
         return v;
     }
