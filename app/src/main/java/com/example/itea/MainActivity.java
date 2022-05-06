@@ -45,8 +45,16 @@ public class MainActivity extends AppCompatActivity {
         basket.getValue().observe(this, badge -> updateBadge());
     }
 
+    public void onResume(){
+        super.onResume();
+        basket = new ViewModelProvider(this).get(BasketViewModel.class);
+        BottomNavigationView navView= findViewById(R.id.bottom_nav_view);
+        badge = navView.getOrCreateBadge(R.id.FragmentBasket);
+        basket.getValue().observe(this, badge -> updateBadge());
 
-    public void updateBadge(){
+    }
+
+    private void updateBadge(){
         if(basket.totalSize()==0){
             badge.setVisible(false);
         }

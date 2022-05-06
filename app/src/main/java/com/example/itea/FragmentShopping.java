@@ -70,7 +70,7 @@ public class FragmentShopping extends Fragment {
             int itemPrice= Integer.parseInt(((String)((TextView)itemView.findViewById(R.id.item_price)).getText()).split("\\s")[0]);
             basket.addItemToBasket(itemName,itemPrice);
 
-            Toast.makeText(getActivity(), itemName + " succesfully added to basket", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), itemName + " succesfully added to basket", Toast.LENGTH_SHORT).show();
         }}
 
     private class ItemAdapter extends RecyclerView.Adapter<ItemHolder> {
