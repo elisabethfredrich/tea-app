@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -15,6 +16,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
     private final static BasketViewModel basket = new BasketViewModel();
+    private BadgeDrawable badge;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.main_activity);
 
         //logo in top bar
-        androidx.appcompat.app.ActionBar actionBar = getSupportActionBar();
+        ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowCustomEnabled(true);
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.logo, null);
@@ -34,14 +36,27 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navView= findViewById(R.id.bottom_nav_view);
 
 
-
         // Hook navigation controller to bottom navigation view
         NavigationUI.setupWithNavController(navView, navController);
 
         //Initialising the basket
         basket.initialize();
 
+        badge = navView.getOrCreateBadge(R.id.FragmentBasket);
+
+       // basket.getValue().observe(this, basket -> updateBadge());
 
     }
 
+    public void updateBadge(){
+        if(basket.size()==0){
+            badge.setVisible(false);
+        }
+        else{
+            badge.setNumber(basket.size());
+            badge.setVisible(true);
+
+        }
+
+    }
 }
