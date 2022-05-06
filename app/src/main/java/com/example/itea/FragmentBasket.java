@@ -39,7 +39,7 @@ public class FragmentBasket extends Fragment {
         basket.getValue().observe(getViewLifecycleOwner(), basket -> {
             mAdapter.notifyDataSetChanged();
             updateBasketText();
-            }
+                }
         );
 
 
