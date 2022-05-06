@@ -5,18 +5,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.Locale;
 
 public class FragmentBasket extends Fragment {
     BasketViewModel basket;
@@ -42,27 +38,15 @@ public class FragmentBasket extends Fragment {
                 }
         );
 
-
         introText = v.findViewById(R.id.introText);
         totalPrice = v.findViewById(R.id.price);
 
         updateBasketText();
 
-
         return v;
     }
 
-    // do we need this?
-    public void onResume() {
-        super.onResume();
-        basket = new ViewModelProvider(requireActivity()).get(BasketViewModel.class);
-        basket.getValue().observe(getViewLifecycleOwner(), basket -> {
-            mAdapter.notifyDataSetChanged();
-            updateBasketText();
-        });
-    }
 
-    //better name for this method?
     private void updateBasketText(){
         if(basket.size()>0){
             introText.setText("Your basket contains:");

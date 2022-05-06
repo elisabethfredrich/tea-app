@@ -6,11 +6,6 @@ public class TeaShop {
     private Location mLoc;  // GPS position
     private String mStreet; //Street name
 
-    public TeaShop(Location loc, String mStreet) {
-        mLoc= loc;
-        setmStreet(mStreet);
-    }
-
     public TeaShop(Location loc) {mLoc= loc; setmStreet("  ");}
 
     public String getmStreet() {return mStreet; }

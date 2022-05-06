@@ -7,12 +7,13 @@
 
     <TextView
         android:id="@+id/fragment_name_text"
-        android:layout_width="wrap_content"
+        android:text="  Find us close to you"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nearest shop:"
-        android:paddingTop="15dp"
-        android:paddingBottom="20dp"
-        android:textSize="20sp"/>
+        android:textSize="24sp"
+        android:layout_marginBottom="20dp"
+        android:paddingTop="10dp"
+        />
 
     <WebView
         android:layout_width="match_parent"

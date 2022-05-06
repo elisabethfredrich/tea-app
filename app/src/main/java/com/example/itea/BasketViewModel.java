@@ -1,21 +1,8 @@
 package com.example.itea;
 
-import android.content.Context;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-import android.app.Application;
-import android.content.Context;
-
-import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
-
-import com.example.itea.Basket;
-import com.example.itea.Item;
-import com.google.android.material.badge.BadgeDrawable;
-
-import java.util.List;
 import java.util.List;
 import java.util.Map;
 
@@ -49,9 +36,8 @@ public class BasketViewModel extends ViewModel {
 
 
         public Map<String, Integer[]> getMap() {  return basket.getValue().getValues();  }
+
         public List<String> getList() {  return basket.getValue().getList();  }
-
-
 
         public int size() { return basket.getValue().size(); }
 

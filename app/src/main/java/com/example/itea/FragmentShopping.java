@@ -1,10 +1,7 @@
 package com.example.itea;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+
 import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +10,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -24,10 +20,6 @@ public class FragmentShopping extends Fragment {
     ItemAdapter mAdapter= new ItemAdapter();
     BasketViewModel basket;
 
-   //Do we need this?
-   /* @Override public void onCreate(Bundle savedInstanceState) {
-     super.onCreate(savedInstanceState);
-    }*/
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -46,12 +38,6 @@ public class FragmentShopping extends Fragment {
         return v;
     }
 
-    //not sure if we need this. Still works without it
-    //public void onResume() {
-    //    super.onResume();
-    //   basket = new ViewModelProvider(requireActivity()).get(BasketViewModel.class);
-    //   basket.getValue().observe(getViewLifecycleOwner(), i -> mAdapter.notifyDataSetChanged());
-    //}
 
     private class ItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private final TextView nameTextView, priceTextView;
@@ -68,7 +54,7 @@ public class FragmentShopping extends Fragment {
             addToBasketButton.setOnClickListener(this);
         }
 
-        public void bind(Item item, int position){
+        public void bind(Item item){
             nameTextView.setText(item.getName());
             priceTextView.setText(item.getPrice()+" kr.");
 
@@ -99,7 +85,7 @@ public class FragmentShopping extends Fragment {
         @Override
         public void onBindViewHolder(ItemHolder holder, int position) {
             Item item=  itemsDB.getValues().get(position);
-            holder.bind(item, position);
+            holder.bind(item);
         }
 
         @Override

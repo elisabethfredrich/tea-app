@@ -5,8 +5,6 @@ public class ItemsDBSchema {
         public static final String NAME = "Items";
 
 
-        // Add more features of a product?
-
         public static final class Cols {
             public static final String PRODUCT_NAME = "name";
             public static final String PRICE = "price";

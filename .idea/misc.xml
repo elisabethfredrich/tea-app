@@ -6,6 +6,12 @@
         <entry key="../../../../../../../../../../layout/custom_preview.xml" value="0.159375" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2984375" />
         <entry key="app/src/main/res/drawable/ic_baseline_add_shopping_cart_24.xml" value="0.2984375" />
+        <entry key="app/src/main/res/drawable/ic_baseline_clear_24.xml" value="0.22447916666666667" />
+        <entry key="app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.22447916666666667" />
+        <entry key="app/src/main/res/drawable/ic_baseline_map_24.xml" value="0.22447916666666667" />
+        <entry key="app/src/main/res/drawable/ic_baseline_shopping_bag_24.xml" value="0.22447916666666667" />
+        <entry key="app/src/main/res/drawable/ic_baseline_shopping_cart_24.xml" value="0.22447916666666667" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.22447916666666667" />
         <entry key="app/src/main/res/drawable/line.xml" value="0.335" />
         <entry key="app/src/main/res/layout-land/one_row.xml" value="0.12610229276895943" />
         <entry key="app/src/main/res/layout-land/one_row_basket.xml" value="0.21119929453262787" />
@@ -20,7 +26,7 @@
         <entry key="app/src/main/res/layout/main_activity.xml" value="0.22735507246376813" />
         <entry key="app/src/main/res/layout/one_row.xml" value="0.25" />
         <entry key="app/src/main/res/layout/one_row_basket.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/one_row_shopping.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/one_row_shopping.xml" value="0.25" />
         <entry key="app/src/main/res/menu/menu_bottom_nav.xml" value="0.24947916666666667" />
         <entry key="app/src/main/res/menu/menue_top_nav.xml" value="0.14895833333333333" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.16510416666666666" />

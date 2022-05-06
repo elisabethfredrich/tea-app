@@ -4,14 +4,12 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
-
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -35,21 +33,18 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         // Find reference to bottom navigation view
         BottomNavigationView navView= findViewById(R.id.bottom_nav_view);
-
-
         // Hook navigation controller to bottom navigation view
         NavigationUI.setupWithNavController(navView, navController);
-
 
         //Initialising the basket
         basket = new ViewModelProvider(this).get(BasketViewModel.class);
         basket.initialize();
 
+        //set up basket badge
         badge = navView.getOrCreateBadge(R.id.FragmentBasket);
-
         basket.getValue().observe(this, badge -> updateBadge());
-
     }
+
 
     public void updateBadge(){
         if(basket.totalSize()==0){
@@ -58,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
         else{
             badge.setNumber(basket.totalSize());
             badge.setVisible(true);
-
         }
 
     }

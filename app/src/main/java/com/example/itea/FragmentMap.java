@@ -23,10 +23,6 @@ import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
-
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
@@ -35,10 +31,7 @@ public class FragmentMap extends Fragment {
     private static final int REQUEST_PERMISSION = 1;
     private FusedLocationProviderClient fusedLocationClient;
     Runnable getTeaShop;
-
-    TextView text;
     private WebView mWeb;
-    private TeaShopDB teaShopDB;
 
 
 
@@ -46,8 +39,7 @@ public class FragmentMap extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_map, container, false);
 
-        text = v.findViewById(R.id.fragment_name_text);
-        teaShopDB = TeaShopDB.get();
+        TeaShopDB.get();
 
         mWeb = (WebView) v.findViewById(R.id.webpage);
         mWeb.getSettings().setJavaScriptEnabled(true);
@@ -60,9 +52,7 @@ public class FragmentMap extends Fragment {
         return v;
     }
 
-
     private void findTeaShop(Location l){
-        teaShopDB= TeaShopDB.get();
         getTeaShop= new httpThread(mWeb, l);
         new Thread(getTeaShop).start();
     }

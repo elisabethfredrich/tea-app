@@ -10,9 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 import android.content.ContentValues;
 import android.database.Cursor;
-
-import androidx.lifecycle.ViewModel;
-
 import com.example.itea.database.ItemCursorWrapper;
 import com.example.itea.database.ItemsDBSchema;
 
@@ -27,7 +24,6 @@ public class ItemsDB {
                 fillItemsDB(context);
        }
    }
-
 
 
     public void addItem(String name, int price, String image){
@@ -55,7 +51,6 @@ public class ItemsDB {
     public int size() {
         return getValues().size();
     }
-
 
     public List<Item> getValues() {
         ArrayList<Item> items= new ArrayList<>();
@@ -90,7 +85,5 @@ public class ItemsDB {
         );
         return new ItemCursorWrapper(cursor);
     }
-
-
 
 }
