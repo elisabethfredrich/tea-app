@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ITea</string>
+    <string name="welcome">Welcome to the world of tea!</string>
+
 </resources>

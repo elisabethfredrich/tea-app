@@ -24,7 +24,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/menu_bottom_nav" />
+        app:menu="@menu/menu_bottom_nav"
+        app:labelVisibilityMode="labeled"/>
 
     <!-- The standard top bar of the app -->
     <androidx.constraintlayout.widget.Guideline
@@ -33,5 +34,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="64dp" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

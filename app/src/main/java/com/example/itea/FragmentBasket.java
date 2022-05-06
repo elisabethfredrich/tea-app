@@ -1,11 +1,13 @@
 package com.example.itea;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,6 +15,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.Locale;
 
 public class FragmentBasket extends Fragment {
     BasketViewModel basket;
@@ -74,10 +78,14 @@ public class FragmentBasket extends Fragment {
     private class ItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private final TextView mNameTextView, mPriceTextView, mAmountTextView;
         private final ImageButton mRemoveButton;
+        private ImageView mProductImage;
+        private ItemsDB itemsDB = new ItemsDB(getActivity());
+
+
 
         public ItemHolder(View itemView) {
             super(itemView);
-
+            mProductImage=itemView.findViewById(R.id.tea_img);
             mNameTextView= itemView.findViewById(R.id.item_name);
             mPriceTextView= itemView.findViewById(R.id.item_price);
             mAmountTextView = itemView.findViewById(R.id.item_amount);
@@ -91,6 +99,12 @@ public class FragmentBasket extends Fragment {
             mNameTextView.setText(itemName);
             mPriceTextView.setText(itemPrice + " kr.");
             mAmountTextView.setText("x"+itemAmount);
+
+            String imageName = itemName.split(" ")[0].toLowerCase();
+            String uri = "@drawable/"+imageName;
+            int imageResource = getResources().getIdentifier(uri, null, "com.example.itea");
+            Drawable res = getResources().getDrawable(imageResource);
+            mProductImage.setImageDrawable(res);
         }
 
         @Override

@@ -1,10 +1,16 @@
 package com.example.itea;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,11 +56,13 @@ public class FragmentShopping extends Fragment {
     private class ItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private final TextView nameTextView, priceTextView;
         private ImageButton addToBasketButton;
+        private ImageView productImage;
 
         public ItemHolder(View itemView) {
             super(itemView);
             nameTextView= itemView.findViewById(R.id.item_name);
             priceTextView= itemView.findViewById(R.id.item_price);
+            productImage = itemView.findViewById(R.id.tea_img);
             addToBasketButton = itemView.findViewById(R.id.addToBasket);
 
             addToBasketButton.setOnClickListener(this);
@@ -63,6 +71,11 @@ public class FragmentShopping extends Fragment {
         public void bind(Item item, int position){
             nameTextView.setText(item.getName());
             priceTextView.setText(item.getPrice()+" kr.");
+
+            String uri = "@drawable/"+item.getImage();
+            int imageResource = getResources().getIdentifier(uri, null, "com.example.itea");
+            Drawable res = getResources().getDrawable(imageResource);
+            productImage.setImageDrawable(res);
         }
 
         @Override
@@ -71,8 +84,7 @@ public class FragmentShopping extends Fragment {
             int itemPrice= Integer.parseInt(((String)((TextView)itemView.findViewById(R.id.item_price)).getText()).split("\\s")[0]);
             basket.addItemToBasket(itemName,itemPrice);
 
-            //cant get the toast to work
-            Toast.makeText(getActivity(), itemName + "succesfully added to basket", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), itemName + " succesfully added to basket", Toast.LENGTH_LONG).show();
         }}
 
     private class ItemAdapter extends RecyclerView.Adapter<ItemHolder> {

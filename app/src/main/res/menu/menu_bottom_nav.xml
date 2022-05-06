@@ -4,21 +4,24 @@
     <item
         android:id="@id/FragmentHome"
         android:icon="@drawable/ic_baseline_home_24"
-        android:title="Home" />
-
+        android:title="Home"
+/>
     <item
         android:id="@id/FragmentShopping"
-        android:icon="@drawable/ic_baseline_shopping_cart_24"
-        android:title="Shop" />
+        android:icon="@drawable/two_tea_leaves"
+        android:title="Shop"
+        />
 
     <item
         android:id="@id/FragmentBasket"
-        android:icon="@drawable/ic_baseline_shopping_cart_24"
-        android:title="Basket" />
+        android:icon="@drawable/ic_baseline_shopping_bag_24"
+        android:title="Basket"
+        />
 
     <item
         android:id="@id/FragmentMap"
         android:icon="@drawable/ic_baseline_map_24"
-        android:title="Find us" />
+        android:title="Find us"
+       />
 
 </menu>

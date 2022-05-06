@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.itea.Basket;
 import com.example.itea.Item;
+import com.google.android.material.badge.BadgeDrawable;
 
 import java.util.List;
 import java.util.List;
@@ -21,6 +22,7 @@ import java.util.Map;
 public class BasketViewModel extends ViewModel {
 
         private static MutableLiveData<Basket> basket;
+
 
         public void initialize(){
             basket.getValue().initialize();

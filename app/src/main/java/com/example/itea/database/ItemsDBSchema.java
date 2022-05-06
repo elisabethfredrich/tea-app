@@ -10,6 +10,8 @@ public class ItemsDBSchema {
         public static final class Cols {
             public static final String PRODUCT_NAME = "name";
             public static final String PRICE = "price";
+            public static final String IMG = "image";
+
         }
     }
 }
